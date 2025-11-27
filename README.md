@@ -1,5 +1,5 @@
 <img width="1536" height="1024" alt="CybersecurityHoneyPot" src="https://github.com/user-attachments/assets/6ed45f46-4706-4bdb-9728-debe1b091250" />
-## Honey-Pot-Creation-for-Home-Lab
+🍯 Honey-Pot-Creation-for-Home-Lab
 
 # T-Pot Honeypot Deployment on Ubuntu 22.04
 
@@ -109,8 +109,6 @@ sudo ./install.sh
 ## 📷 Screenshots
 <img width="1584" height="799" alt="image" src="https://github.com/user-attachments/assets/8ed74f98-6f54-4197-a4cb-2196930b3061" />
 
-```
-
 ---
 
 ### 🔑 Token Legend
@@ -127,3 +125,82 @@ sudo ./install.sh
 
 ---
 
+# Security Policy
+
+## 🔒 Supported Versions
+This repository documents a deployment of **T-Pot honeypot framework** on Ubuntu 22.04.  
+Security practices described here apply to the following environment:
+
+- **OS**: Ubuntu LTS (22.04 and newer)
+- **Docker**: Latest stable release
+- **T-Pot**: Current release from [telekom-security/tpotce](https://github.com/telekom-security/tpotce)
+
+---
+
+## ⚠️ Responsible Use
+T-Pot is a **honeypot framework** designed to attract, log, and analyze malicious traffic.  
+It should **never** be deployed on production systems or networks without proper segmentation.
+
+- Run only in **isolated lab environments** or controlled research networks.
+- Do not expose honeypots to sensitive internal systems.
+- Treat all captured data as potentially malicious.
+
+---
+
+## 🛡️ Hardening Recommendations
+After installation, apply the following security measures:
+
+1. **Change Default Credentials**
+   - Replace `TOKEN_DEFAULT_USER` / `TOKEN_DEFAULT_PASSWORD` immediately.
+   - Use strong, unique passwords.
+
+2. **Restrict Access**
+   - Limit SSH (`TOKEN_SSH_PORT`) and dashboard (`TOKEN_DASHBOARD_PORT`) access to trusted IP ranges.
+   - Use firewalls (e.g., `ufw` or `iptables`) to enforce rules.
+
+3. **Network Segmentation**
+   - Place honeypots in a dedicated VLAN or subnet.
+   - Prevent lateral movement into production networks.
+
+4. **System Updates**
+   - Regularly run:
+     ```bash
+     sudo apt update && sudo apt upgrade -y
+     ```
+   - Keep Docker and T-Pot images up to date.
+
+5. **Monitoring & Logging**
+   - Review container logs with:
+     ```bash
+     sudo docker logs <container-id>
+     ```
+   - Forward logs to a SIEM or secure storage for analysis.
+
+---
+
+## 📢 Reporting Vulnerabilities
+If you discover a security issue in this repository or deployment process:
+
+- **Do not open a public GitHub issue.**
+- Contact the maintainer directly via GitHub profile email.
+- Provide:
+  - Steps to reproduce
+  - Affected components
+  - Suggested remediation
+
+---
+
+## ✅ Disclosure Policy
+- Vulnerabilities will be acknowledged within **7 days**.
+- Fixes or mitigations will be documented in the repository.
+- Critical issues will trigger an immediate update to the `README.md` and deployment notes.
+
+---
+
+## 📌 Notes
+This repository is for **educational and research purposes only**.  
+The maintainer assumes no liability for misuse of the instructions or framework.  
+Always deploy honeypots responsibly and in compliance with local laws and organizational policies.
+
+
+```
