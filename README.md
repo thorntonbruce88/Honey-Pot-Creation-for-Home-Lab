@@ -91,6 +91,57 @@ sudo ./install.sh
 
 ---
 
+## 🔍 Verification
+
+After installation and reboot, verify that T-Pot is running as a managed service:
+
+```bash
+sudo systemctl status tpot
+```
+
+### ✅ Example Healthy Output
+```text
+● tpot.service - T-Pot
+     Loaded: loaded (/etc/systemd/system/tpot.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2025-11-27 20:23:44 UTC; 5min ago
+    Process: 1171 ExecStartPre=/usr/bin/docker compose -f /home/TOKEN_USER/tpotce/docker-compose.yml down -v (code=exited, status=0/SUCCESS)
+   Main PID: 1196 (docker)
+      Tasks: 19 (limit: 9247)
+     Memory: 56.2M
+        CPU: 1.415s
+     CGroup: /system.slice/tpot.service
+             ├─1196 /usr/bin/docker compose -f /home/TOKEN_USER/tpotce/docker-compose.yml up
+             └─1213 /usr/libexec/docker/cli-plugins/docker-compose compose -f /home/TOKEN_USER/tpotce/docker-compose.yml up
+
+Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Ipphoney Honeypot Modul.
+Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Log4Pot Honeypot Modul.
+Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Mailoney Honeypot Modul.
+Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Medpot Honeypot Modul.
+Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Wordpot Honeypot Modul.
+```
+
+### 🔑 What to Look For
+- **Loaded** → Service file exists and is enabled (will start on boot).  
+- **Active (running)** → T-Pot is currently running.  
+- **Main PID** → Managed by Docker Compose.  
+- **Logs** → Honeypot modules (Cowrie, Dionaea, Conpot, Heralding, Suricata, Wordpot, etc.) are being initialized.
+
+---
+
+### 🧭 Additional Checks
+- List containers:
+  ```bash
+  sudo docker ps
+  ```
+- Access dashboard:
+  ```
+  https://TOKEN_LAN_IP:TOKEN_DASHBOARD_PORT
+  ```
+- Confirm SSH honeypot responds on port `22` (while management SSH is on `TOKEN_SSH_PORT`).
+
+---
+
+
 ## 🧠 Skills Demonstrated
 - Advanced troubleshooting of apt keyring and repo conflicts
 - Docker daemon recovery and storage driver validation
