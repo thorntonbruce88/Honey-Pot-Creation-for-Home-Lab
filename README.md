@@ -160,6 +160,9 @@ Nov 27 20:29:12 boyhowdy docker[1213]: ewsposter            |  => Starting Wordp
 ## 📷 Screenshots
 <img width="1584" height="799" alt="image" src="https://github.com/user-attachments/assets/8ed74f98-6f54-4197-a4cb-2196930b3061" />
 
+<img width="1590" height="793" alt="image" src="https://github.com/user-attachments/assets/738db769-183a-41d7-8cb6-4323e2e24e96" />
+
+
 ---
 
 ### 🔑 Token Legend
